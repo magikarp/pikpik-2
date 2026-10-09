@@ -126,16 +126,16 @@ p2_bringup_app(p2_story_bringup "Pikmin 2 Metal Story" local.pikmin2.metal.story
 
 if(IOS)
     # The same link the Xcode shell performs, so a missing symbol fails here.
-    # tools/ios_link_config.py turns its link line into Pikmin2.xcconfig, which
-    # ios/Pikmin2.xcodeproj includes: every archive and framework, in CMake's order.
-    add_executable(p2_ios_link_check EXCLUDE_FROM_ALL ios/Pikmin2/main.m)
+    # tools/ios_link_config.py turns its link line into <shell>.xcconfig, which
+    # ios/<shell>.xcodeproj includes: every archive and framework, in CMake's order.
+    add_executable(p2_ios_link_check EXCLUDE_FROM_ALL "ios/${P2_IOS_SHELL_NAME}/main.m")
     target_link_libraries(p2_ios_link_check PRIVATE p2_story_bringup)
     target_link_options(p2_ios_link_check PRIVATE -Wl,-dead_strip)
     add_custom_command(TARGET p2_ios_link_check POST_BUILD
         COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/tools/ios_link_config.py"
             --link-txt "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/p2_ios_link_check.dir/link.txt"
-            --build-dir "${CMAKE_CURRENT_BINARY_DIR}" --out "${CMAKE_CURRENT_BINARY_DIR}/Pikmin2.xcconfig"
-        COMMENT "Write Pikmin2.xcconfig for the Xcode shell")
+            --build-dir "${CMAKE_CURRENT_BINARY_DIR}" --out "${CMAKE_CURRENT_BINARY_DIR}/${P2_IOS_SHELL_NAME}.xcconfig"
+        COMMENT "Write ${P2_IOS_SHELL_NAME}.xcconfig for the Xcode shell")
 endif()
 
 get_target_property(p2_game_link_libs p2_game_link_audit LINK_LIBRARIES)

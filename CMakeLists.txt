@@ -5,7 +5,15 @@ if(IOS)
 endif()
 option(P2_BUILD_RENDERER "Build the Aurora GX/Metal integration" OFF)
 
+# Untracked per-machine settings, if you keep any — typically P2_DISC_DIR
+# pointing at wherever your extracted dump actually lives. Absent in the
+# published tree, which defaults to disc/ in the repository root.
+include("${CMAKE_CURRENT_SOURCE_DIR}/local.cmake" OPTIONAL)
+
 # Published-tree overrides. All empty here, so this tree behaves as before.
+# Name of the iOS Xcode shell project, its source folder, and the xcconfig the
+# build generates for it. One variable because those three must agree.
+set(P2_IOS_SHELL_NAME "Pikmin2" CACHE STRING "iOS Xcode shell project name")
 set(P2_APP_TARGET "" CACHE STRING "Which bring-up target the overrides below apply to")
 set(P2_APP_NAME "" CACHE STRING "Override the app bundle and executable name")
 set(P2_APP_ID   "" CACHE STRING "Override the app bundle identifier")

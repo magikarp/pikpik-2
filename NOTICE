@@ -70,10 +70,17 @@ Original work by the pikpik-2 authors, licensed MIT (see LICENSE):
      setup.sh; not redistributed here. Licence text at
      third-party/LICENSE-aurora-MIT.txt.
 
-  c) Freeverb — Jezar at Dreampoint, public domain, as modified in Dusklight
-     (https://github.com/TwilitRealm/dusklight, CC0). The modified source is
-     the one file set this project does vendor, in third_party/freeverb,
-     because both the original and the modification are unencumbered.
+  c) Dusklight — https://github.com/TwilitRealm/dusklight, CC0.
+     Two things come from it, both credited in the source where they are used:
+
+       * third_party/freeverb — Freeverb by Jezar at Dreampoint, public
+         domain, as modified in Dusklight. The one file set this project
+         vendors, because both the original and the modification are
+         unencumbered.
+       * src/audio_host.cpp — the voice mixer and the shared stereo reverb
+         are adapted from Dusklight's DuskDsp.cpp, the same DSP microcode
+         family being emulated.
+
      Licence text at third-party/LICENSE-dusklight-CC0.txt.
 
   d) Dawn, SDL3, xxHash, ImGui, Tracy — Aurora's own dependencies, fetched by

@@ -1,6 +1,6 @@
 # pikpik-2
 
-A native **macOS (Metal)** source port of *Pikmin 2* for the Nintendo GameCube,
+A native **macOS** and **iPadOS** (Metal) source port of *Pikmin 2* for the Nintendo GameCube,
 built on the [projectPiki decompilation](https://github.com/projectPiki/pikmin2)
 and [Aurora](https://github.com/encounter/aurora).
 
@@ -56,11 +56,20 @@ among them. Budget an hour for it. Later builds are incremental.
 Full detail, including what to do when it goes wrong:
 [docs/BUILDING_MACOS.md](docs/BUILDING_MACOS.md).
 
-## iOS
+## Build it — iPadOS / iOS
 
-Not in this release. The engine has been built and run on an iPad, but it
-needs Dawn compiled from source with a patch, and that path is not yet
-packaged for anyone else to follow. It will come.
+```bash
+./setup.sh
+./build_ios.sh
+open ios/pikpik-2.xcodeproj
+```
+
+Needs iPadOS/iOS 16.4+ on M-series hardware, and Xcode 16+. The first
+`build_ios.sh` compiles Dawn from source and takes 20 to 40 minutes. Set your
+own team and bundle identifier in Xcode, then Run, and copy the extracted disc
+into the app's Documents folder through Finder.
+
+Full detail: [docs/BUILDING_IOS.md](docs/BUILDING_IOS.md).
 
 ## How it is put together
 
@@ -85,7 +94,8 @@ the tour.
 | [docs/LEGAL.md](docs/LEGAL.md) | What is and is not distributed, and why. Read this one |
 | [CREDITS.md](CREDITS.md) | Whose work this is built on |
 | [docs/GAME_DATA.md](docs/GAME_DATA.md) | What the game data is and where it goes |
-| [docs/BUILDING_MACOS.md](docs/BUILDING_MACOS.md) | The build, in full |
+| [docs/BUILDING_MACOS.md](docs/BUILDING_MACOS.md) | The macOS build, in full |
+| [docs/BUILDING_IOS.md](docs/BUILDING_IOS.md) | The iPad build, signing, and getting data onto a device |
 | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) | How the port layer is organised |
 | [CONTRIBUTING.md](CONTRIBUTING.md) | Rules for contributions, including some hard ones |
 

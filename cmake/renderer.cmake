@@ -1,13 +1,14 @@
 # Aurora (encounter/aurora, MIT) supplies the GX/Metal layer. It is not
 # vendored. Two trees satisfy it differently, so probe rather than hardcode:
 #   published tree     setup.sh clones it to vendor/aurora at the pinned commit
-#   development tree   an existing local checkout, e.g. dusklight's submodule
+#   development tree   an existing local checkout, named in local.cmake via
+#                      P2_AURORA_SEARCH_PATHS
 # Pass -DP2_AURORA_SOURCE=/path to override either.
 set(P2_AURORA_SOURCE "" CACHE PATH "Aurora repository (empty = autodetect)")
 if(NOT P2_AURORA_SOURCE)
     foreach(candidate
             "${CMAKE_CURRENT_SOURCE_DIR}/vendor/aurora"
-            "${CMAKE_CURRENT_SOURCE_DIR}/../../dusklight/extern/aurora")
+            ${P2_AURORA_SEARCH_PATHS})
         if(EXISTS "${candidate}/CMakeLists.txt")
             set(P2_AURORA_SOURCE "${candidate}")
             break()
@@ -71,9 +72,28 @@ if(IOS)
     set(AURORA_DAWN_PROVIDER vendor CACHE STRING "Build Dawn from source" FORCE)
     p2_local_renderer_dependency(dawn "${CMAKE_CURRENT_SOURCE_DIR}/../references/dawn-src-1155e0ed.tar.gz"
         "d0d291936d02a56b3b7e92e84e8b8c71db04a9c9e2b3a41cc6d7540cf13b4167")
-    execute_process(COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/tools/patch_dawn.py"
-        "${FETCHCONTENT_SOURCE_DIR_DAWN}" COMMAND_ERROR_IS_FATAL ANY)
     set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/tools/patch_dawn.py")
+    if(FETCHCONTENT_SOURCE_DIR_DAWN)
+        # A local archive was unpacked above, so the source is already on disk
+        # and can be patched in place before Aurora builds it.
+        execute_process(COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/tools/patch_dawn.py"
+            "${FETCHCONTENT_SOURCE_DIR_DAWN}" COMMAND_ERROR_IS_FATAL ANY)
+    else()
+        # No local archive: let Dawn be downloaded, which is what anyone
+        # without this machine's reference directory does. Declaring it here
+        # FIRST wins over Aurora's own declaration, which is how the iOS BC
+        # patch gets attached — FetchContent honours the first Declare for a
+        # name, and PATCH_COMMAND then runs on the populated tree.
+        include(FetchContent)
+        # Take the ref from Aurora rather than duplicating it, so a bump there
+        # cannot silently disagree with a hardcoded value here.
+        include("${P2_RENDERER}/cmake/AuroraDependencyVersions.cmake")
+        message(STATUS "Pikmin 2: fetching Dawn source ${AURORA_DAWN_REF} (iOS BC patch applied on populate)")
+        FetchContent_Declare(dawn
+            URL "https://github.com/encounter/dawn/archive/${AURORA_DAWN_REF}.tar.gz"
+            PATCH_COMMAND "${Python3_EXECUTABLE}"
+                          "${CMAKE_CURRENT_SOURCE_DIR}/tools/patch_dawn.py" "<SOURCE_DIR>")
+    endif()
     set(P2_DAWN_ARCHIVE "" CACHE FILEPATH "Unused on iOS" FORCE)
 else()
     set(P2_DAWN_ARCHIVE "${CMAKE_CURRENT_SOURCE_DIR}/../references/dawn-darwin-arm64.tar.gz"
@@ -108,7 +128,16 @@ if(IOS)
             p2_dawn_optimize("${child}")
         endforeach()
     endfunction()
-    p2_dawn_optimize("${FETCHCONTENT_SOURCE_DIR_DAWN}")
+    # Set by the local-archive path; FetchContent sets dawn_SOURCE_DIR otherwise.
+    set(p2_dawn_dir "${FETCHCONTENT_SOURCE_DIR_DAWN}")
+    if(NOT p2_dawn_dir)
+        set(p2_dawn_dir "${dawn_SOURCE_DIR}")
+    endif()
+    if(p2_dawn_dir)
+        p2_dawn_optimize("${p2_dawn_dir}")
+    else()
+        message(WARNING "Pikmin 2: Dawn source directory unknown; skipping the -O3 pass")
+    endif()
 endif()
 # THP movie audio is decoded by Aurora's THPAudio.cpp; only real-audio apps mix it.
 set_source_files_properties("${P2_PREPARED}/src/sysGCU/THPDraw.c" PROPERTIES LANGUAGE CXX)
