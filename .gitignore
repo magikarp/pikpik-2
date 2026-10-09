@@ -1,0 +1,25 @@
+# Fetched at build time by setup.sh. NEVER commit these — this repository
+# deliberately contains no decompiled game source and no Aurora copy.
+/vendor/
+
+# Your extracted disc. Never committed, and not a style preference.
+/disc/
+*.iso
+*.gcm
+*.rvz
+*.wia
+*.ciso
+*.dol
+
+# Build output
+build*/
+/userdata/
+*.log
+
+# Recordings and local captures
+/recordings/
+/ios-test-results/
+
+__pycache__/
+*.pyc
+.DS_Store

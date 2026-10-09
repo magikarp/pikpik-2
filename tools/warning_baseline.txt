@@ -1,0 +1,168 @@
+1	include/Dolphin/gd.h	return __GDCurrentDL->data - __GDCurrentDL->begin;
+1	include/Game/EnemyMgrBase.h	return getEnemy((intptr_t)index);
+1	include/JSYstem/JStudio/functionvalue.h	friend s32 operator-(const TIterator_data_& r1, const TIterator_data_& r2) { return (r1.mValue - r2.mValue) / r1.size_; }
+1	include/JSYstem/JStudio/functionvalue.h	friend s32 operator-(const TIterator_data_& r1, const TIterator_data_& r2) { return (r1.mValue - r2.mValue) / suData_size; }
+1	include/JSystem/JAudio/JAS/JASGenericMemPool.h	void operator delete(void* ptr, size_t size) { SingletonHolder::getInstance()->free(ptr, size); }
+1	include/JSystem/JAudio/JAS/JASKernel.h	return mHead->alloc(msgLength);
+1	include/JSystem/JAudio/JAS/JASKernel.h	u32 getFreeSize() const { return 0x400 - mUsedLength; }
+1	include/JSystem/JGadget/search.h	i += stride;
+1	include/JSystem/JGadget/search.h	i -= stride;
+2	include/JSystem/JGadget/search.h	stride = expand.get(stride);
+1	include/JSystem/JGadget/vector.h	u32 extendedSize = mExtend(capacity(), oldSize, count);
+1	include/JSystem/JGadget/vector.h	u32 neededNewSpace = oldSize + count;
+1	include/JSystem/JGadget/vector.h	u32 newSize = GetSize_extend_(count);
+1	include/JSystem/JGadget/vector.h	u32 oldSize = size();
+1	include/JSystem/JGadget/vector.h	u32 posOffset = position - mBegin;
+1	include/JSystem/JKernel/JKRFileCache.h	return readResource(resourceBuffer, bufferSize, path);
+1	include/JSystem/JKernel/JKRFileCache.h	return readResource(resourceBuffer, bufferSize, type, name);
+1	include/JSystem/JKernel/JKRHeap.h	return JKRExpHeap::create(size, heap, a);
+1	include/JSystem/JKernel/JKRHeap.h	return JKRSolidHeap::create(size, heap, a);
+1	include/JSystem/JStudio/functionvalue.h	friend s32 operator-(const TIterator_data_& r1, const TIterator_data_& r2) { return (r1.mValue - r2.mValue) / r1.size_; }
+1	include/JSystem/JStudio/functionvalue.h	friend s32 operator-(const TIterator_data_& r1, const TIterator_data_& r2) { return (r1.mValue - r2.mValue) / suData_size; }
+1	include/JSystem/JUtility/JUTFont.h	drawString_size_scale(posX, posY, width, height, str, strlen(str), visible);
+1	include/JSystem/JUtility/JUTFont.h	static u32 calcCacheSize(u32 sheetSize, int pageCount) { return (ALIGN_NEXT(sheetSize, 0x20) + 0x40) * pageCount; }
+1	include/JSystem/JUtility/JUTFont.h	void drawString(int posX, int posY, const char* str, bool visible) { drawString_size(posX, posY, str, strlen(str), visible); }
+1	include/MonoObjectMgr.h	for (int i = (intptr_t)idx + 1; i < mMax; i++) {
+3	src/JSystem/J2D/J2DPrint.cpp	len = mStrBuffSize - 1;
+1	src/JSystem/J2D/J2DPrint.cpp	len = mStrBuffSize;
+1	src/JSystem/J2D/J2DPrint.cpp	u32 len = strlen(str);
+2	src/JSystem/J2D/J2DPrint.cpp	value = strtol((char*)*strPtr, &endStr, base);
+2	src/JSystem/J2D/J2DPrint.cpp	value = strtoul((char*)*strPtr, &endStr, base);
+1	src/JSystem/J2D/J2DScreen.cpp	JSUMemoryInputStream input(resource, resSize);
+1	src/JSystem/J3D/J3DDrawBuffer.cpp	hash = (uintptr_t)p2_texture_image(texture->getResTIMG(texNo), texture->getResTIMG(texNo)->mImageDataOffset) >> 5;
+21	src/JSystem/J3D/J3DMatBlock.cpp	DCStoreRange(start, GDGetCurrPointer() - start);
+4	src/JSystem/J3D/J3DMatBlock.cpp	DCStoreRange(startPtr, GDGetCurrPointer() - startPtr);
+2	src/JSystem/J3D/J3DMatBlock.cpp	GDOverflowCheck(SizeOfJ3DColorBlockAmbientOnLoad);
+1	src/JSystem/J3D/J3DMatBlock.cpp	GDOverflowCheck(SizeOfJ3DColorBlockLightOffLoad);
+4	src/JSystem/J3D/J3DMatBlock.cpp	GDOverflowCheck(SizeOfLoadColorChans);
+4	src/JSystem/J3D/J3DMatBlock.cpp	GDOverflowCheck(SizeOfLoadMatColors);
+1	src/JSystem/J3D/J3DMaterial.cpp	return ALIGN_NEXT(mColorBlock->countDLSize() + mTexGenBlock->countDLSize() + mTevBlock->countDLSize() + mIndBlock->countDLSize()
+3	src/JSystem/J3D/J3DModelLoaderCalcSize.cpp	return size;
+3	src/JSystem/J3D/J3DPacket.cpp	mCapacity = ALIGN_NEXT(size, 0x20);
+1	src/JSystem/J3D/J3DPacket.cpp	mSize = sGDLObj.data - sGDLObj.begin;
+1	src/JSystem/J3D/J3DPacket.cpp	return OSRoundUp32B(size);
+1	src/JSystem/J3D/J3DShapeFactory.cpp	return ALIGN_NEXT(count * J3DShape::kVcdVatDLSize, 0x20);
+1	src/JSystem/JAudio/JAI/JAIBankWave.cpp	SceneSetFlag = flag;
+1	src/JSystem/JAudio/JAI/JAIBasic.cpp	buffer = (char*)JASDram->alloc(strlen(JAIGlobalParameter::audioResPath) + strlen(JAIGlobalParameter::streamPath) + 1, 0);
+1	src/JSystem/JAudio/JAI/JAIBasic.cpp	char* buffer = (char*)JASDram->alloc(strlen(JAIGlobalParameter::audioResPath) + strlen(JAIGlobalParameter::wavePath) + 1, 0);
+1	src/JSystem/JAudio/JAI/JAIInitData.cpp	strlen(JAIGlobalParameter::getParamAudioResPath()) + strlen(JAIGlobalParameter::getParamInitDataFileName()) + 1, 0);
+1	src/JSystem/JAudio/JAI/JAISequenceMgr.cpp	seq->mSeqParameter.mTrack.setSeqData(info->mFilePtr, JASResArcLoader::getResSize(arcPointer, seq->mSoundInfo->mOffsetNo));
+1	src/JSystem/JAudio/JAI/JAISequenceMgr.cpp	u32 resSize = JASResArcLoader::getResSize(arcPointer, seqOffset);
+2	src/JSystem/JAudio/JAS/JASBNKParser.cpp	u32 tableLength = (getOscTableEndPtr(oscTable) - oscTable) * sizeof(s16);
+1	src/JSystem/JAudio/JAS/JASDSPInterface.cpp	DCFlushRange(audioBuffer, length);
+1	src/JSystem/JAudio/JAS/JASDSPInterface.cpp	JASCalc::bzero(audioBuffer, length);
+1	src/JSystem/JAudio/JAS/JASDvdThread.cpp	*castedArgs->_04 = castedArgs->_00;
+2	src/JSystem/JAudio/JAS/JASHeapCtrl.cpp	size = OSRoundUp32B(size);
+1	src/JSystem/JAudio/JAS/JASHeapCtrl.cpp	u32 offset = !heap ? mSize : heap->mBase - mBase;
+1	src/JSystem/JAudio/JAS/JASHeapCtrl.cpp	u32 offset = !mLastChild ? 0 : mLastChild->mBase + mLastChild->mSize - mBase;
+1	src/JSystem/JAudio/JAS/JASHeapCtrl.cpp	u32 offset = parent->mBase + parent->mSize - minBase;
+1	src/JSystem/JAudio/JAS/JASProbe.cpp	mStartTime = OSGetTime();
+1	src/JSystem/JAudio/JAS/JASResArcLoader.cpp	u32 readResult = castedArgs->mArchive->readResource(castedArgs->mBuffer, castedArgs->mBufferSize, castedArgs->mID);
+2	src/JSystem/JAudio/JAS/JASWSParser.cpp	bank->setWaveTableSize(maxSize + 1);
+1	src/JSystem/JAudio/JAS/JASWSParser.cpp	waveGroup->setWaveInfo(waveIndex, size, info);
+1	src/JSystem/JFramework/JFWSystem.cpp	JUTCreateFifo(CSetUpParam::fifoBufSize);
+1	src/JSystem/JKernel/JKRAramArchive.cpp	ALIGN_PREV(compressedSize, 32), compression);
+1	src/JSystem/JKernel/JKRAramArchive.cpp	DCInvalidateRange(mDataInfo, alignedSize);
+1	src/JSystem/JKernel/JKRAramArchive.cpp	JKRDvdToMainRam(entryNum, (u8*)mDataInfo, Switch_1, alignedSize, nullptr, JKRDvdRipper::ALLOC_DIR_TOP, 32, nullptr, nullptr);
+1	src/JSystem/JKernel/JKRAramArchive.cpp	const_cast<JKRAramArchive*>(this)->setExpandSize(fileEntry, decompExpandSize);
+1	src/JSystem/JKernel/JKRAramArchive.cpp	mBlock = JKRAllocFromAram(aramSize, mMountDirection == EMD_Head ? JKRAramHeap::AM_Head : JKRAramHeap::AM_Tail);
+1	src/JSystem/JKernel/JKRAramArchive.cpp	mDataInfo = (SArcDataInfo*)JKRAllocFromHeap(mHeap, alignedSize, alignment);
+1	src/JSystem/JKernel/JKRAramArchive.cpp	return decompExpandSize;
+1	src/JSystem/JKernel/JKRAramArchive.cpp	return expandSize;
+1	src/JSystem/JKernel/JKRAramArchive.cpp	u32 alignedExpSize = ALIGN_PREV(expandSize, 0x20);
+1	src/JSystem/JKernel/JKRAramArchive.cpp	u32 alignedSize = ALIGN_NEXT(size, 0x20);
+1	src/JSystem/JKernel/JKRAramArchive.cpp	u32 alignedSize = ALIGN_NEXT(size, 32);
+1	src/JSystem/JKernel/JKRAramArchive.cpp	u32 expandSize = ALIGN_NEXT(JKRDecompExpandSize(bufptr), 32);
+1	src/JSystem/JKernel/JKRAramHeap.cpp	mHeadAddress = ALIGN_NEXT(addr, 0x20);
+1	src/JSystem/JKernel/JKRAramHeap.cpp	mSize = ALIGN_PREV(size, 0x20);
+2	src/JSystem/JKernel/JKRAramHeap.cpp	u32 alignedSize = ALIGN_NEXT(size, 0x20);
+1	src/JSystem/JKernel/JKRAramStream.cpp	transSize = ALIGN_PREV(bufferSize, 0x20);
+2	src/JSystem/JKernel/JKRArchivePri.cpp	u32 index = (entry - mFileEntries);
+1	src/JSystem/JKernel/JKRArchivePub.cpp	sCurrentDirID = (entry - mDirectories);
+1	src/JSystem/JKernel/JKRCompArchive.cpp	JKRDvdToMainRam(mEntryNum, bufPtr, Switch_2, sizeof(buf) / 2, nullptr, JKRDvdRipper::ALLOC_DIR_TOP, _6C + fileEntry->mDataOffset,
+1	src/JSystem/JKernel/JKRCompArchive.cpp	size = JKRDvdArchive::fetchResource_subroutine(mEntryNum, _6C + fileEntry->mDataOffset, alignedSize, (u8*)data,
+1	src/JSystem/JKernel/JKRCompArchive.cpp	u32 alignedSize = ALIGN_NEXT(fileSize, 32);
+1	src/JSystem/JKernel/JKRCompArchive.cpp	u32 alignedSize = ALIGN_NEXT(mDvdFile->getFileSize(), 32);
+1	src/JSystem/JKernel/JKRCompArchive.cpp	u32 expandSize = ALIGN_NEXT(JKRDecompExpandSize(buf), 32);
+1	src/JSystem/JKernel/JKRCompArchive.cpp	u32 resSize = JKRDvdArchive::fetchResource_subroutine(mEntryNum, _6C + fileEntry->mDataOffset, fileEntry->mSize, mHeap,
+1	src/JSystem/JKernel/JKRDvdArchive.cpp	JKRDvdToMainRam(mEntryNum, bufPtr, Switch_2, sizeof(buf) / 2, nullptr, JKRDvdRipper::ALLOC_DIR_TOP, _64 + fileEntry->mDataOffset,
+1	src/JSystem/JKernel/JKRDvdArchive.cpp	alignedSize = ALIGN_NEXT(size, 32);
+1	src/JSystem/JKernel/JKRDvdArchive.cpp	fileSize = fetchResource_subroutine(mEntryNum, _64 + entry->mDataOffset, entry->mSize, (u8*)data, compressedSize & ~31, compression,
+1	src/JSystem/JKernel/JKRDvdArchive.cpp	prevAlignedSize = ALIGN_PREV(expandSize, 32);
+1	src/JSystem/JKernel/JKRDvdArchive.cpp	size = ALIGN_NEXT(expandSize, 32);
+1	src/JSystem/JKernel/JKRDvdArchive.cpp	size = fetchResource_subroutine(mEntryNum, _64 + entry->mDataOffset, entry->mSize, mHeap, (int)compression, mCompression, &data);
+1	src/JSystem/JKernel/JKRDvdArchive.cpp	u32 alignedSize = ALIGN_NEXT(fileSize, 32);
+1	src/JSystem/JKernel/JKRDvdArchive.cpp	u32 alignedSize = ALIGN_NEXT(size, 32);
+3	src/JSystem/JKernel/JKRExpHeap.cpp	size = ALIGN_NEXT(size, alignof(CMemBlock));
+1	src/JSystem/JKernel/JKRExpHeap.cpp	u32 alignedSize = ALIGN_PREV(size, 0x10);
+1	src/JSystem/JKernel/JKRExpHeap.cpp	u32 offset = ALIGN_PREV(align - 1 + (uintptr_t)block->getContent(), align) - (uintptr_t)block->getContent();
+1	src/JSystem/JKernel/JKRExpHeap.cpp	u32 size2 = ALIGN_NEXT(size, alignof(CMemBlock));
+1	src/JSystem/JKernel/JKRExpHeap.cpp	usedSize = (uintptr_t)block->getContent() + block->mAllocatedSpace - start;
+1	src/JSystem/JKernel/JKRFileCache.cpp	bufferSize = ALIGN_PREV(bufferSize, 0x20);
+1	src/JSystem/JKernel/JKRFileCache.cpp	file.read(resource, byteCount, 0);
+1	src/JSystem/JKernel/JKRFileCache.cpp	file.read(resourceBuffer, consumedSize, 0);
+1	src/JSystem/JKernel/JKRFileCache.cpp	resource = JKRHeap::alloc(byteCount, 0x20, mParentHeap);
+1	src/JSystem/JKernel/JKRFileCache.cpp	return readResource(p1, p2, p3);
+1	src/JSystem/JKernel/JKRFileCache.cpp	u32 pathLength = strlen(directoryPath);
+1	src/JSystem/JKernel/JKRFileCache.cpp	u32 pathLength = strlen(path);
+2	src/JSystem/JKernel/JKRFileCache.cpp	u32 volumeLength = strlen(volumePath) + 1;
+2	src/JSystem/JKernel/JKRFileCache.cpp	void* memory = JKRHeap::sSystemHeap->alloc(length, 1);
+1	src/JSystem/JKernel/JKRHeap.cpp	*size = (uintptr_t)ram_end - (uintptr_t)ram_start;
+1	src/JSystem/JKernel/JKRHeap.cpp	u32 ptrOffset = (uintptr_t(0) - maxFreeBlock) & uintptr_t(alignment - 1);
+1	src/JSystem/JKernel/JKRSolidHeap.cpp	mFreeSize = ((uintptr_t)mEndAddress - (uintptr_t)mSolidTail + mFreeSize);
+1	src/JSystem/JKernel/JKRSolidHeap.cpp	size = ALIGN_NEXT(size, 0x4);
+1	src/JSystem/JKernel/JKRSolidHeap.cpp	size = ALIGN_NEXT(size, 4);
+1	src/JSystem/JKernel/JKRSolidHeap.cpp	u32 alignedSize = ALIGN_PREV(heapSize, 0x10);
+1	src/JSystem/JKernel/JKRSolidHeap.cpp	u32 calculatedSize = ((uintptr_t)mSolidHead - (uintptr_t)mStartAddress) + mFreeSize + ((uintptr_t)mEndAddress - (uintptr_t)mSolidTail);
+1	src/JSystem/JKernel/JKRSolidHeap.cpp	u32 headSize = ((uintptr_t)mSolidHead - (uintptr_t)mStartAddress);
+1	src/JSystem/JKernel/JKRSolidHeap.cpp	u32 newSize = ALIGN_NEXT((uintptr_t)mSolidHead - (uintptr_t)mStartAddress, 0x20);
+1	src/JSystem/JKernel/JKRSolidHeap.cpp	u32 offset = alignedStart - (uintptr_t)mSolidHead;
+1	src/JSystem/JKernel/JKRSolidHeap.cpp	u32 sum = (uintptr_t)mSolidHead;
+1	src/JSystem/JKernel/JKRSolidHeap.cpp	u32 tailSize = ((uintptr_t)mEndAddress - (uintptr_t)mSolidTail);
+1	src/JSystem/JKernel/JKRSolidHeap.cpp	u32 thisSize = (uintptr_t)mStartAddress - (uintptr_t)this;
+1	src/JSystem/JKernel/JKRSolidHeap.cpp	u32 totalSize = (uintptr_t)mSolidTail - (uintptr_t)alignedStart;
+1	src/JSystem/JKernel/JKRThread.cpp	: JKRThread(stackSize, msgCount, threadPriority)
+1	src/JSystem/JStudio/functionvalue.cpp	s32 count = functionValues.size();
+1	src/JSystem/JStudio/functionvalue.cpp	s32 iVar3 = list.mData2.get() - pfVar2;
+1	src/JSystem/JStudio/functionvalue.cpp	s32 iVar5 = pfVar2 - list.mData1.get();
+1	src/JSystem/JStudio/functionvalue.cpp	u32 numFunctions = functionValues.size();
+1	src/JSystem/JStudio/functionvalue.cpp	u32 size = ((JGadget::TVector_pointer<JStudio::TFunctionValue*>&)p1).size();
+1	src/JSystem/JStudio/functionvalue.cpp	u32 size = p1.size();
+1	src/JSystem/JStudio/stb.cpp	on_data(dataID.getID(), dataID.getIDSize(), temp, size - ((uintptr_t)temp - (uintptr_t)dataID.getRaw()));
+1	src/JSystem/JSupport/JSUOutputStream.cpp	int len = strlen((char*)str);
+1	src/JSystem/JUtility/JUTConsole.cpp	u32 byteCount = getLineFromObjectSize(objectSize, bufferSize);
+1	src/JSystem/JUtility/JUTConsole.cpp	u32 byteCount = getObjectSizeFromBufferSize(bufferSize, bufferCount);
+1	src/JSystem/JUtility/JUTConsole.cpp	u32 lineLength = strlen((char*)linePtr);
+1	src/JSystem/JUtility/JUTDirectFile.cpp	ALIGN_PREV(mPos, DVD_MIN_TRANSFER_SIZE), nullptr);
+1	src/JSystem/JUtility/JUTDirectFile.cpp	int readRes = DVDReadAsync(&mFileInfo, mSectorStart, ALIGN_NEXT(mToRead, DVD_MIN_TRANSFER_SIZE),
+1	src/JSystem/JUtility/JUTDirectFile.cpp	mToRead = mLength - ALIGN_PREV(mPos, DVD_MIN_TRANSFER_SIZE);
+1	src/JSystem/JUtility/JUTException.cpp	int size = strtol(buffer + 11, nullptr, 16);
+1	src/JSystem/JUtility/JUTException.cpp	u32 addr = ((buffer[18] - '0') << 28) | strtol(buffer + 19, nullptr, 16);
+1	src/JSystem/JUtility/JUTException.cpp	u32 addr = ALIGN_PREV(section->offset, 2);
+1	src/JSystem/JUtility/JUTGamePad.cpp	pad->checkCallback(mPortNum, diff);
+1	src/JSystem/JUtility/JUTGraphFifo.cpp	mSize = ALIGN_NEXT(size, 0x20);
+1	src/plugProjectEbisawaU/ebiCardEReader.cpp	*(u32*)sizeToGba = changeEndian(size);
+1	src/plugProjectHikinoU/PSAutoBgm.cpp	u32 size = OSRoundUp32B(file[3]);
+1	src/plugProjectHikinoU/PSSeq.cpp	sound->mSeqHeap->loadedCallback(size, (uintptr_t)sound->mSeqHeap);
+1	src/plugProjectKandoU/gameMapParts.cpp	int pathLen = strlen(path);
+1	src/plugProjectKandoU/gameMapParts.cpp	int pathLength = strlen(path);
+1	src/plugProjectKandoU/pelletConfig.cpp	u32 len = strlen(str);
+1	src/plugProjectKandoU/pelletMgr.cpp	mIndex = (intptr_t)mMgr->getNext((void*)(intptr_t)mIndex);
+1	src/plugProjectKandoU/pelletMgr.cpp	mIndex = (intptr_t)mMgr->getStart();
+1	src/plugProjectKandoU/texCaster.cpp	mDisplayListSize = OSRoundDown32B(mTriangleCount * 12 + 34);
+1	src/plugProjectKandoU/vsFifo.cpp	mSize = OSRoundUp32B(size);
+1	src/plugProjectOgawaU/ogTitleMsg.cpp	mStringLength = strlen(string) >> 1;
+1	src/plugProjectYamashitaU/enemyMgrBase.cpp	for (int i = (intptr_t)object + 1; i < mObjLimit; i++) {
+1	src/sysCommonU/parameters.cpp	int valueLen = strlen(value);
+1	src/sysCommonU/stream.cpp	int len = strlen(inputStr);
+2	src/sysCommonU/stream.cpp	int len = strlen(tempText);
+1	src/sysCommonU/stream.cpp	int strSize = strlen(nextToken);
+1	src/sysCommonU/tagparams.cpp	int nodeNameLen = strlen(node->mName);
+2	src/sysCommonU/tagparams.cpp	strLen = strlen(str);
+1	src/sysGCU/JSTObjectActor.cpp	int index = c - chars.begin();
+1	src/sysGCU/JSTObjectActor.cpp	int index = std::distance(ints.begin(), i);
+1	src/sysGCU/JSTObjectParticleActor.cpp	int length = strlen(name);
+1	src/sysGCU/modelMgr.cpp	mHeaps[i] = JKRSolidHeap::create(OSRoundUp32B(maxSize), JKRHeap::sCurrentHeap, true);
+1	src/sysGCU/movieConfig.cpp	int nameLength = strlen(movieName);
+1	src/sysGCU/movieConfig.cpp	mapLength = strlen(mapName);
+1	src/sysGCU/moviePlayerAudio.cpp	int pos = strlen(str);
